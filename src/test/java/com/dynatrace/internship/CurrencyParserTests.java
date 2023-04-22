@@ -1,6 +1,8 @@
 package com.dynatrace.internship;
 
+import com.dynatrace.internship.exceptions.IncorrectCurrencyCodeException;
 import com.dynatrace.internship.parsers.CurrencyParser;
+import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import org.junit.jupiter.api.Test;
 
 import java.util.Currency;
@@ -21,6 +23,6 @@ public class CurrencyParserTests {
     public void IncorrectCode()
     {
         CurrencyParser parser = new CurrencyParserImpl();
-        assertThrows(IncorrectCodeError, parser.getCurrencyInstance("Incorrect code"));
+        assertThrows(IncorrectCurrencyCodeException.class, () -> parser.getCurrencyInstance("Incorrect code"), "Specify currency code compatible with ISO 4217");
     }
 }
