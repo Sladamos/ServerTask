@@ -1,9 +1,8 @@
 package com.dynatrace.internship.controllers;
 
 
-import com.dynatrace.internship.connectors.AverageRateGetter;
-import com.dynatrace.internship.connectors.NBPAverageRateGetter;
-import com.dynatrace.internship.exceptions.IncorrectCurrencyCodeException;
+import com.dynatrace.internship.connectors.averagerategeggets.AverageRateGetter;
+import com.dynatrace.internship.connectors.averagerategeggets.XmlNBPAverageRateGetter;
 import com.dynatrace.internship.parsers.CurrencyParser;
 import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import com.dynatrace.internship.parsers.DateParser;
@@ -37,8 +36,8 @@ public class ExchangesController {
             DateParser dateParser = new DateParserImpl(formatter);
             LocalDate localDate = dateParser.getFormattedDate(date);
 
-            AverageRateGetter rateGetter = new NBPAverageRateGetter(NBP_TABLE_ID);
-            return String.valueOf(rateGetter.GetAverageExchangeRate(currency, localDate));
+            AverageRateGetter rateGetter = new XmlNBPAverageRateGetter(NBP_TABLE_ID);
+            return String.valueOf(rateGetter.getAverageExchangeRate(currency, localDate));
         }
         catch (Exception err) {
             return err.getMessage();
