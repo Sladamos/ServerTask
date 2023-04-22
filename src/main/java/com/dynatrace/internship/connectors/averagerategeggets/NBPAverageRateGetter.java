@@ -5,8 +5,10 @@ import com.dynatrace.internship.creators.HttpConnectionCreator;
 import com.dynatrace.internship.exceptions.ResponseCodeException;
 import lombok.AllArgsConstructor;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Currency;
 
@@ -21,19 +23,26 @@ public abstract class NBPAverageRateGetter implements AverageRateGetter {
         try {
             var creator = new HttpConnectionCreator();
             HttpURLConnection conn = creator.createConnection(finalPath, "GET");
-            //try to connect
-            conn.connect();
+            tryToConnect(conn);
+            return getValueFromURL(conn.getURL());
 
-            int responseCode = conn.getResponseCode();
-            if(responseCode != 200) {
-                throw new ResponseCodeException(responseCode); //include body from url?
-            }
-            //get value from input
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (Exception err) {
+            throw new RuntimeException(err);
         }
-        return 0;
+    }
+
+    private void tryToConnect(HttpURLConnection conn) {
+        try {
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                String responseMessage = conn.getResponseMessage();
+                throw new ResponseCodeException(responseCode, responseMessage);
+            }
+        }
+        catch (IOException err) {
+            throw new RuntimeException(err);
+        }
     }
 
     private String createFinalPath(Currency currency, LocalDate date) {
