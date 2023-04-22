@@ -21,7 +21,6 @@ public class NBPAverageRateGetter implements AverageRateGetter {
     private String createFinalPath(Currency currency, LocalDate date) {
         StringBuilder pathBuilder = new StringBuilder();
         pathBuilder.append(RATE_PATH);
-        pathBuilder.append('/');
         pathBuilder.append(tableId);
         pathBuilder.append('/');
         pathBuilder.append(currency.getCurrencyCode());
