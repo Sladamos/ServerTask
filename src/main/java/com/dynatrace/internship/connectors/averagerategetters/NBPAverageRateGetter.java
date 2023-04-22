@@ -1,4 +1,4 @@
-package com.dynatrace.internship.connectors.averagerategeggets;
+package com.dynatrace.internship.connectors.averagerategetters;
 
 import com.dynatrace.internship.creators.HttpConnectionCreator;
 import com.dynatrace.internship.exceptions.AverageExchangeRateException;
@@ -36,6 +36,10 @@ public abstract class NBPAverageRateGetter implements AverageRateGetter {
             conn.connect();
             int responseCode = conn.getResponseCode();
             if (responseCode != 200) {
+                if(responseCode == 400)
+                {
+                    throw new ResponseException(responseCode, "Błędna data - incorrect date");
+                }
                 String responseMessage = conn.getResponseMessage();
                 throw new ResponseException(responseCode, responseMessage);
             }

@@ -1,4 +1,4 @@
-package com.dynatrace.internship.connectors.averagerategeggets;
+package com.dynatrace.internship.connectors.averagerategetters;
 
 import java.time.LocalDate;
 import java.util.Currency;

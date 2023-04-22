@@ -1,8 +1,8 @@
 package com.dynatrace.internship.controllers;
 
 
-import com.dynatrace.internship.connectors.averagerategeggets.AverageRateGetter;
-import com.dynatrace.internship.connectors.averagerategeggets.XmlNBPAverageRateGetter;
+import com.dynatrace.internship.connectors.averagerategetters.AverageRateGetter;
+import com.dynatrace.internship.connectors.averagerategetters.XmlNBPAverageRateGetter;
 import com.dynatrace.internship.parsers.CurrencyParser;
 import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import com.dynatrace.internship.parsers.DateParser;
