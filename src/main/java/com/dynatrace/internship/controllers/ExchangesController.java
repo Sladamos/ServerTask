@@ -18,7 +18,7 @@ import java.util.Currency;
 @RestController
 public class ExchangesController {
 
-    private final String EXCHANGES_URL = "/exchanges";
+    private final String EXCHANGES_URL = "nbp/exchanges";
     private final char NBP_TABLE_ID = 'A';
 
     @GetMapping(value = {EXCHANGES_URL + "/**", EXCHANGES_URL})
