@@ -31,6 +31,10 @@ public abstract class NBPAverageRateGetter implements AverageRateGetter {
         }
     }
 
+    protected abstract String getFormatAttribute();
+
+    protected abstract double getValueFromURL(URL url);
+
     private void tryToConnect(HttpURLConnection conn) {
         try {
             conn.connect();
@@ -60,8 +64,4 @@ public abstract class NBPAverageRateGetter implements AverageRateGetter {
         pathBuilder.append(getFormatAttribute());
         return pathBuilder.toString();
     }
-
-    protected abstract String getFormatAttribute();
-
-    protected abstract double getValueFromURL(URL url);
 }
