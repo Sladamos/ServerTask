@@ -25,7 +25,7 @@ public class QuotationsParserImpl implements QuotationsParser {
 			return numberOfQuotations;
 		}
 		catch (Exception err) {
-			throw new RuntimeException("Specify decimal number of last quotations from range <" + minimumQuotations + ":" + maximumQuotations + ">");
+			throw new IncorrectQuotationsException("Specify decimal number of last quotations from range <" + minimumQuotations + ":" + maximumQuotations + ">");
 		}
 	}
 }
