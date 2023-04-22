@@ -16,12 +16,10 @@ public class DateParserImpl implements DateParser {
         try {
             return LocalDate.parse(date, formatter);
         }
-        catch (NullPointerException err)
-        {
+        catch (NullPointerException err) {
             throw new IncorrectDateFormatterException(err.getMessage());
         }
-        catch (Exception err)
-        {
+        catch (Exception err) {
             throw new IncorrectDateException(err.getMessage());
         }
     }

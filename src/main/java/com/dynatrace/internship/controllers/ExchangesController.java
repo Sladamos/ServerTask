@@ -28,8 +28,7 @@ public class ExchangesController {
     }
 
     @GetMapping(value = EXCHANGES_URL + "/{code}/{date}")
-    public String getExchangeRate(@PathVariable("code") String currencyCode, @PathVariable("date") String date)
-    {
+    public String getExchangeRate(@PathVariable("code") String currencyCode, @PathVariable("date") String date) {
         try {
             CurrencyParser parser = new CurrencyParserImpl();
             Currency currency = parser.getCurrencyInstance(currencyCode);
@@ -41,14 +40,8 @@ public class ExchangesController {
             AverageRateGetter rateGetter = new NBPAverageRateGetter(NBP_TABLE_ID);
             return String.valueOf(rateGetter.GetAverageExchangeRate(currency, localDate));
         }
-        catch (Exception err)
-        {
+        catch (Exception err) {
             return err.getMessage();
         }
-
-        //is date okay
-        //go to connector
     }
-
-
 }

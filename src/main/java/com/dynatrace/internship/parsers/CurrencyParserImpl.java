@@ -7,12 +7,10 @@ import java.util.Currency;
 public class CurrencyParserImpl implements CurrencyParser {
     @Override
     public Currency getCurrencyInstance(String currencyCode) {
-        try
-        {
+        try {
             return Currency.getInstance(currencyCode);
         }
-        catch (Exception err)
-        {
+        catch (Exception err) {
             throw new IncorrectCurrencyCodeException("Specify currency code compatible with ISO 4217");
         }
     }
