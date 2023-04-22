@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CurrencyParserTests {
 
     @Test
-    public void CorrectCode()
+    public void correctCode()
     {
         CurrencyParser parser = new CurrencyParserImpl();
         Currency instance = parser.getCurrencyInstance("GBP");
@@ -20,7 +20,7 @@ public class CurrencyParserTests {
     }
 
     @Test
-    public void IncorrectCode()
+    public void incorrectCode()
     {
         CurrencyParser parser = new CurrencyParserImpl();
         assertThrows(IncorrectCurrencyCodeException.class, () -> parser.getCurrencyInstance("Incorrect code"), "Specify currency code compatible with ISO 4217");
