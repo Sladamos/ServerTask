@@ -1,5 +1,7 @@
 package com.dynatrace.internship.creators;
 
+import com.dynatrace.internship.exceptions.ConnectionException;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -15,7 +17,7 @@ public class HttpConnectionCreator implements ConnectionCreator<HttpURLConnectio
             return conn;
         }
         catch (Exception err) {
-            throw new RuntimeException(err);
+            throw new ConnectionException(err.getMessage());
         }
     }
 }

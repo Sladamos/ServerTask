@@ -1,14 +1,14 @@
 package com.dynatrace.internship.connectors.averagerategeggets;
 
-import com.dynatrace.internship.creators.ConnectionCreator;
 import com.dynatrace.internship.creators.HttpConnectionCreator;
-import com.dynatrace.internship.exceptions.ResponseCodeException;
+import com.dynatrace.internship.exceptions.AverageExchangeRateException;
+import com.dynatrace.internship.exceptions.ConnectionException;
+import com.dynatrace.internship.exceptions.ResponseException;
 import lombok.AllArgsConstructor;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Currency;
 
@@ -27,7 +27,7 @@ public abstract class NBPAverageRateGetter implements AverageRateGetter {
             return getValueFromURL(conn.getURL());
 
         } catch (Exception err) {
-            throw new RuntimeException(err);
+            throw new AverageExchangeRateException(err.getMessage());
         }
     }
 
@@ -37,11 +37,11 @@ public abstract class NBPAverageRateGetter implements AverageRateGetter {
             int responseCode = conn.getResponseCode();
             if (responseCode != 200) {
                 String responseMessage = conn.getResponseMessage();
-                throw new ResponseCodeException(responseCode, responseMessage);
+                throw new ResponseException(responseCode, responseMessage);
             }
         }
         catch (IOException err) {
-            throw new RuntimeException(err);
+            throw new ConnectionException(err.getMessage());
         }
     }
 

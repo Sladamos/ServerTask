@@ -22,11 +22,11 @@ public class XmlNBPAverageRateGetter extends NBPAverageRateGetter{
     protected double getValueFromURL(URL url) {
         try {
             XPathFactory xpf = XPathFactory.newInstance();
-            XPath xp = xpf.newXPath();
+            XPath xPath = xpf.newXPath();
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(url.openStream());
-            String value = xp.evaluate("//Mid[1]/text()", document.getDocumentElement());
+            String value = xPath.evaluate("//Mid[1]/text()", document.getDocumentElement());
             return Double.parseDouble(value);
         }
         catch(Exception err) {
