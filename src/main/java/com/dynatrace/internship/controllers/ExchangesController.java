@@ -38,7 +38,7 @@ public class ExchangesController {
 
             AverageRateGetter rateGetter = new XmlNBPAverageRateGetter(NBP_TABLE_ID);
 
-            return currency.getCurrencyCode() +  " " + localDate.toString() + " " + String.valueOf(rateGetter.getAverageExchangeRate(currency, localDate));
+            return currency.getCurrencyCode() +  "<br/>Selected date: " + localDate.toString() + "<br/>Average rate: " + rateGetter.getAverageExchangeRate(currency, localDate);
         }
         catch (Exception err) {
             return err.getMessage();

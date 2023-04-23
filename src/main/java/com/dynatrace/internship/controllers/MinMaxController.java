@@ -33,11 +33,13 @@ public class MinMaxController {
 			Currency currency = parser.getCurrencyInstance(currencyCode);
 
 			QuotationsParser quotationsParser = new QuotationsParserImpl(MINIMUM_QUOTATIONS, MAXIMUM_QUOTATIONS);
+			int numberOfQuotations = quotationsParser.getNumberOfQuotations(quotations);
 
 			MinMaxGetter minMaxGetter = new XmlNBPMinMaxGetter(NBP_TABLE_ID);
-			//TODO specify output
-			//XMLGetter
-			return "blabla";
+			double maxAverageValue = minMaxGetter.getMaxAverageValue(currency, numberOfQuotations);
+			double minAverageValue = minMaxGetter.getMinAverageValue(currency, numberOfQuotations);
+			return currency.getCurrencyCode() + "<br/>Last quotations: " + String.valueOf(numberOfQuotations) +  "<br/>Max average value: " + String.valueOf(maxAverageValue) +
+					"<br/>Min average value: " + String.valueOf(minAverageValue);
 		}
 		catch (Exception err) {
 			return err.getMessage();
