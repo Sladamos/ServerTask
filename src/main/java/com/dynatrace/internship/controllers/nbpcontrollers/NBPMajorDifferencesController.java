@@ -33,7 +33,7 @@ public class NBPMajorDifferencesController {
             int numberOfQuotations = quotationsParser.getNumberOfQuotations(quotations);
 
             MajorDifferenceRateGetter differenceRateGetter = new JsonNBPMajorDifferenceRateGetter(NBP_TABLE_ID);
-            RateDifference difference =  differenceRateGetter.getMajorDifference(currency, numberOfQuotations);
+            RateDifference difference =  differenceRateGetter.getMajorDifferenceRate(currency, numberOfQuotations);
 
             return currency.getCurrencyCode() + "<br/>Major rate difference: " + difference.getDifferenceValue() +
                     "<br/>One of possible dates: " + difference.getDifferenceDate();

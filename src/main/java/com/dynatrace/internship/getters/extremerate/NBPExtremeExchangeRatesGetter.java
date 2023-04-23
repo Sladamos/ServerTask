@@ -2,7 +2,7 @@ package com.dynatrace.internship.getters.extremerate;
 
 import com.dynatrace.internship.creators.HttpConnectionCreator;
 import com.dynatrace.internship.exceptions.ConnectionException;
-import com.dynatrace.internship.exceptions.MinMaxAverageRateException;
+import com.dynatrace.internship.exceptions.ExtremeExchangeRateException;
 import com.dynatrace.internship.exceptions.ResponseException;
 import lombok.AllArgsConstructor;
 
@@ -23,10 +23,10 @@ public abstract class NBPExtremeExchangeRatesGetter implements ExtremeExchangeRa
 			var creator = new HttpConnectionCreator();
 			HttpURLConnection conn = creator.createConnection(finalPath, "GET");
 			tryToConnect(conn);
-			return getMinValueFromURL(conn.getURL());
+			return getMinExchangeRateFromURL(conn.getURL());
 
 		} catch (Exception err) {
-			throw new MinMaxAverageRateException(err.getMessage());
+			throw new ExtremeExchangeRateException(err.getMessage());
 		}
 	}
 
@@ -37,18 +37,18 @@ public abstract class NBPExtremeExchangeRatesGetter implements ExtremeExchangeRa
 			var creator = new HttpConnectionCreator();
 			HttpURLConnection conn = creator.createConnection(finalPath, "GET");
 			tryToConnect(conn);
-			return getMaxValueFromURL(conn.getURL());
+			return getMaxExchangeRateFromURL(conn.getURL());
 
 		} catch (Exception err) {
-			throw new MinMaxAverageRateException(err.getMessage());
+			throw new ExtremeExchangeRateException(err.getMessage());
 		}
 	}
 
 	protected abstract String getFormatAttribute();
 
-	protected abstract double getMaxValueFromURL(URL url);
+	protected abstract double getMaxExchangeRateFromURL(URL url);
 
-	protected abstract double getMinValueFromURL(URL url);
+	protected abstract double getMinExchangeRateFromURL(URL url);
 
 	private String createFinalPath(Currency currency, int numberOfQuotations) {
 		StringBuilder pathBuilder = new StringBuilder();

@@ -19,7 +19,7 @@ public class XmlNBPExtremeExchangeRatesGetter extends NBPExtremeExchangeRatesGet
 	}
 
 	@Override
-	protected double getMaxValueFromURL(URL url) {
+	protected double getMaxExchangeRateFromURL(URL url) {
 		try {
 			XPathFactory xpf = XPathFactory.newInstance();
 			XPath xPath = xpf.newXPath();
@@ -35,7 +35,7 @@ public class XmlNBPExtremeExchangeRatesGetter extends NBPExtremeExchangeRatesGet
 	}
 
 	@Override
-	protected double getMinValueFromURL(URL url) {
+	protected double getMinExchangeRateFromURL(URL url) {
 		try {
 			XPathFactory xpf = XPathFactory.newInstance();
 			XPath xPath = xpf.newXPath();
