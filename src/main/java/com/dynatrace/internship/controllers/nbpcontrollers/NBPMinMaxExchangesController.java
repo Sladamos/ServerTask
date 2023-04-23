@@ -16,7 +16,7 @@ import java.util.Currency;
 @RestController
 public class NBPMinMaxExchangesController {
 
-	private final static String MINMAX_URL = "nbp/minmax";
+	private final static String MINMAX_URL = "nbp/min-max";
 	private final static char NBP_TABLE_ID = 'A';
 	private final static int MAXIMUM_QUOTATIONS = 255;
 	private final static int MINIMUM_QUOTATIONS = 1;
@@ -38,8 +38,8 @@ public class NBPMinMaxExchangesController {
 			MinMaxAverageRateGetter minMaxAverageRateGetter = new XmlNBPMinMaxAverageRateGetter(NBP_TABLE_ID);
 			double maxAverageValue = minMaxAverageRateGetter.getMaxAverageValue(currency, numberOfQuotations);
 			double minAverageValue = minMaxAverageRateGetter.getMinAverageValue(currency, numberOfQuotations);
-			return currency.getCurrencyCode() + "<br/>Last quotations: " + String.valueOf(numberOfQuotations) +  "<br/>Max average value: " + String.valueOf(maxAverageValue) +
-					"<br/>Min average value: " + String.valueOf(minAverageValue);
+			return currency.getCurrencyCode() + "<br/>Last quotations: " + numberOfQuotations +  "<br/>Max average value: " + maxAverageValue +
+					"<br/>Min average value: " + minAverageValue;
 		}
 		catch (Exception err) {
 			return err.getMessage();
