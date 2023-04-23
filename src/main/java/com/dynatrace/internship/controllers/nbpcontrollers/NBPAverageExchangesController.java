@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 
 @RestController
-public class NBPExchangesController {
+public class NBPAverageExchangesController {
 
     private final static String EXCHANGES_URL = "nbp/exchanges";
     private final static char NBP_TABLE_ID = 'A';
