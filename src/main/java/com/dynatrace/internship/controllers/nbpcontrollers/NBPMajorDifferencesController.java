@@ -31,10 +31,13 @@ public class NBPMajorDifferencesController {
             QuotationsParser quotationsParser = new QuotationsParserImpl(MINIMUM_QUOTATIONS, MAXIMUM_QUOTATIONS);
             int numberOfQuotations = quotationsParser.getNumberOfQuotations(quotations);
 
-
+            MajorDifferenceRateGetter = new MajorDifferenceRateGetterImpl(NBP_TABLE_ID);
             //TODO
             //implement MajorDifferenceGetter
-            return "oh";
+            //pseudocode:
+            //get all nodes with xpath
+            //select where difference is the biggest
+            return "not implemented";
         }
         catch (Exception err) {
             return err.getMessage();
