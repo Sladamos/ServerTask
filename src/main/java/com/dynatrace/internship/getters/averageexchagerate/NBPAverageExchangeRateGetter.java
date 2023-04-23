@@ -1,4 +1,4 @@
-package com.dynatrace.internship.connectors.averagerategetters;
+package com.dynatrace.internship.getters.averageexchagerate;
 
 import com.dynatrace.internship.creators.HttpConnectionCreator;
 import com.dynatrace.internship.exceptions.AverageExchangeRateException;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.Currency;
 
 @AllArgsConstructor
-public abstract class NBPAverageRateGetter implements AverageRateGetter {
+public abstract class NBPAverageExchangeRateGetter implements AverageExchangeRateGetter {
     private char tableId;
     private final String RATE_PATH = "http://api.nbp.pl/api/exchangerates/rates/";
 

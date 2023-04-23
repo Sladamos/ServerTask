@@ -1,8 +1,8 @@
-package com.dynatrace.internship.connectors.minmaxgetters;
+package com.dynatrace.internship.getters.minmaxaveragerate;
 
 import com.dynatrace.internship.creators.HttpConnectionCreator;
-import com.dynatrace.internship.exceptions.AverageExchangeRateException;
 import com.dynatrace.internship.exceptions.ConnectionException;
+import com.dynatrace.internship.exceptions.MinMaxAverageRateException;
 import com.dynatrace.internship.exceptions.ResponseException;
 import lombok.AllArgsConstructor;
 
@@ -26,7 +26,7 @@ public abstract class NBPMinMaxAverageRateGetter implements MinMaxAverageRateGet
 			return getMinValueFromURL(conn.getURL());
 
 		} catch (Exception err) {
-			throw new AverageExchangeRateException(err.getMessage());
+			throw new MinMaxAverageRateException(err.getMessage());
 		}
 	}
 
@@ -40,7 +40,7 @@ public abstract class NBPMinMaxAverageRateGetter implements MinMaxAverageRateGet
 			return getMaxValueFromURL(conn.getURL());
 
 		} catch (Exception err) {
-			throw new AverageExchangeRateException(err.getMessage());
+			throw new MinMaxAverageRateException(err.getMessage());
 		}
 	}
 

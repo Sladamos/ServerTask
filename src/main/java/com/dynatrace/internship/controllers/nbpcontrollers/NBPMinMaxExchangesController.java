@@ -1,8 +1,8 @@
 package com.dynatrace.internship.controllers.nbpcontrollers;
 
 
-import com.dynatrace.internship.connectors.minmaxgetters.XmlNBPMinMaxAverageRateGetter;
-import com.dynatrace.internship.connectors.minmaxgetters.MinMaxAverageRateGetter;
+import com.dynatrace.internship.getters.minmaxaveragerate.XmlNBPMinMaxAverageRateGetter;
+import com.dynatrace.internship.getters.minmaxaveragerate.MinMaxAverageRateGetter;
 import com.dynatrace.internship.parsers.CurrencyParser;
 import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import com.dynatrace.internship.parsers.QuotationsParser;

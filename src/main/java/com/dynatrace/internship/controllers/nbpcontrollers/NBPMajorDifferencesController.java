@@ -1,13 +1,11 @@
 package com.dynatrace.internship.controllers.nbpcontrollers;
 
-import com.dynatrace.internship.connectors.averagerategetters.AverageRateGetter;
-import com.dynatrace.internship.connectors.averagerategetters.XmlNBPAverageRateGetter;
+import com.dynatrace.internship.getters.majordifferencerate.MajorDifferenceRateGetter;
+import com.dynatrace.internship.getters.majordifferencerate.XmlNBPMajorDifferenceRateGetter;
 import com.dynatrace.internship.parsers.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 
 public class NBPMajorDifferencesController {
@@ -31,7 +29,7 @@ public class NBPMajorDifferencesController {
             QuotationsParser quotationsParser = new QuotationsParserImpl(MINIMUM_QUOTATIONS, MAXIMUM_QUOTATIONS);
             int numberOfQuotations = quotationsParser.getNumberOfQuotations(quotations);
 
-            MajorDifferenceRateGetter = new MajorDifferenceRateGetterImpl(NBP_TABLE_ID);
+            MajorDifferenceRateGetter differenceRateGetter = new XmlNBPMajorDifferenceRateGetter(NBP_TABLE_ID);
             //TODO
             //implement MajorDifferenceGetter
             //pseudocode:

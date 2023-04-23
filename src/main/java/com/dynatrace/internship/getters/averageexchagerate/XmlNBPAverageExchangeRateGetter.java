@@ -1,4 +1,4 @@
-package com.dynatrace.internship.connectors.averagerategetters;
+package com.dynatrace.internship.getters.averageexchagerate;
 
 import org.w3c.dom.Document;
 
@@ -8,8 +8,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 import java.net.URL;
 
-public class XmlNBPAverageRateGetter extends NBPAverageRateGetter{
-    public XmlNBPAverageRateGetter(char tableId) {
+public class XmlNBPAverageExchangeRateGetter extends NBPAverageExchangeRateGetter {
+    public XmlNBPAverageExchangeRateGetter(char tableId) {
         super(tableId);
     }
 

@@ -1,4 +1,4 @@
-package com.dynatrace.internship.connectors.minmaxgetters;
+package com.dynatrace.internship.getters.minmaxaveragerate;
 
 import org.w3c.dom.Document;
 

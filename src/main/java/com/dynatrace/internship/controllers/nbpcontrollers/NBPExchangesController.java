@@ -1,8 +1,8 @@
 package com.dynatrace.internship.controllers.nbpcontrollers;
 
 
-import com.dynatrace.internship.connectors.averagerategetters.AverageRateGetter;
-import com.dynatrace.internship.connectors.averagerategetters.XmlNBPAverageRateGetter;
+import com.dynatrace.internship.getters.averageexchagerate.AverageExchangeRateGetter;
+import com.dynatrace.internship.getters.averageexchagerate.XmlNBPAverageExchangeRateGetter;
 import com.dynatrace.internship.parsers.CurrencyParser;
 import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import com.dynatrace.internship.parsers.DateParser;
@@ -36,7 +36,7 @@ public class NBPExchangesController {
             DateParser dateParser = new DateParserImpl(formatter);
             LocalDate localDate = dateParser.getFormattedDate(date);
 
-            AverageRateGetter rateGetter = new XmlNBPAverageRateGetter(NBP_TABLE_ID);
+            AverageExchangeRateGetter rateGetter = new XmlNBPAverageExchangeRateGetter(NBP_TABLE_ID);
 
             return currency.getCurrencyCode() +  "<br/>Selected date: " + localDate.toString() + "<br/>Average rate: " + rateGetter.getAverageExchangeRate(currency, localDate);
         }
