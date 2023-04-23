@@ -1,4 +1,4 @@
-package com.dynatrace.internship.controllers;
+package com.dynatrace.internship.controllers.nbpcontrollers;
 
 
 import com.dynatrace.internship.connectors.averagerategetters.AverageRateGetter;
@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 
 @RestController
-public class ExchangesController {
+public class NBPExchangesController {
 
     private final static String EXCHANGES_URL = "nbp/exchanges";
     private final static char NBP_TABLE_ID = 'A';

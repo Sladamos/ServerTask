@@ -1,4 +1,4 @@
-package com.dynatrace.internship.controllers;
+package com.dynatrace.internship.controllers.nbpcontrollers;
 
 
 import com.dynatrace.internship.connectors.minmaxgetters.XmlNBPMinMaxGetter;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Currency;
 
 @RestController
-public class MinMaxController {
+public class NBPMinMaxController {
 
 	private final static String MINMAX_URL = "nbp/minmax";
 	private final static char NBP_TABLE_ID = 'A';
