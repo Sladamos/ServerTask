@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.Currency;
 
 @AllArgsConstructor
-public abstract class NBPMinMaxGetter implements MinMaxGetter {
+public abstract class NBPMinMaxAverageRateGetter implements MinMaxAverageRateGetter {
 	private char tableId;
 	private final String RATE_PATH = "http://api.nbp.pl/api/exchangerates/rates/";
 

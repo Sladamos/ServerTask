@@ -8,8 +8,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 import java.net.URL;
 
-public class XmlNBPMinMaxGetter extends NBPMinMaxGetter {
-	public XmlNBPMinMaxGetter(char tableId) {
+public class XmlNBPMinMaxAverageRateGetter extends NBPMinMaxAverageRateGetter {
+	public XmlNBPMinMaxAverageRateGetter(char tableId) {
 		super(tableId);
 	}
 

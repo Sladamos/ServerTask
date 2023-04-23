@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FrontController {
 
     @GetMapping(value = {"", "/**"})
-    public String incorrectValue()
+    public String generateError()
     {
         return "Enter correct URL specified in .README file";
     }

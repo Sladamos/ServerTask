@@ -2,7 +2,7 @@ package com.dynatrace.internship.connectors.minmaxgetters;
 
 import java.util.Currency;
 
-public interface MinMaxGetter {
+public interface MinMaxAverageRateGetter {
 	double getMinAverageValue(Currency currency, int numberOfQuotations);
 	double getMaxAverageValue(Currency currency, int numberOfQuotations);
 }

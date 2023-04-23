@@ -1,8 +1,8 @@
 package com.dynatrace.internship.controllers.nbpcontrollers;
 
 
-import com.dynatrace.internship.connectors.minmaxgetters.XmlNBPMinMaxGetter;
-import com.dynatrace.internship.connectors.minmaxgetters.MinMaxGetter;
+import com.dynatrace.internship.connectors.minmaxgetters.XmlNBPMinMaxAverageRateGetter;
+import com.dynatrace.internship.connectors.minmaxgetters.MinMaxAverageRateGetter;
 import com.dynatrace.internship.parsers.CurrencyParser;
 import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import com.dynatrace.internship.parsers.QuotationsParser;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Currency;
 
 @RestController
-public class NBPMinMaxController {
+public class NBPMinMaxExchangesController {
 
 	private final static String MINMAX_URL = "nbp/minmax";
 	private final static char NBP_TABLE_ID = 'A';
@@ -27,7 +27,7 @@ public class NBPMinMaxController {
 	}
 
 	@GetMapping(value = MINMAX_URL + "/{code}/{quotations}")
-	public String getExchangeRate(@PathVariable("code") String currencyCode, @PathVariable("quotations") String quotations) {
+	public String getMinMaxValues(@PathVariable("code") String currencyCode, @PathVariable("quotations") String quotations) {
 		try {
 			CurrencyParser parser = new CurrencyParserImpl();
 			Currency currency = parser.getCurrencyInstance(currencyCode);
@@ -35,9 +35,9 @@ public class NBPMinMaxController {
 			QuotationsParser quotationsParser = new QuotationsParserImpl(MINIMUM_QUOTATIONS, MAXIMUM_QUOTATIONS);
 			int numberOfQuotations = quotationsParser.getNumberOfQuotations(quotations);
 
-			MinMaxGetter minMaxGetter = new XmlNBPMinMaxGetter(NBP_TABLE_ID);
-			double maxAverageValue = minMaxGetter.getMaxAverageValue(currency, numberOfQuotations);
-			double minAverageValue = minMaxGetter.getMinAverageValue(currency, numberOfQuotations);
+			MinMaxAverageRateGetter minMaxAverageRateGetter = new XmlNBPMinMaxAverageRateGetter(NBP_TABLE_ID);
+			double maxAverageValue = minMaxAverageRateGetter.getMaxAverageValue(currency, numberOfQuotations);
+			double minAverageValue = minMaxAverageRateGetter.getMinAverageValue(currency, numberOfQuotations);
 			return currency.getCurrencyCode() + "<br/>Last quotations: " + String.valueOf(numberOfQuotations) +  "<br/>Max average value: " + String.valueOf(maxAverageValue) +
 					"<br/>Min average value: " + String.valueOf(minAverageValue);
 		}
