@@ -22,7 +22,7 @@ To start the server in a docker container, run sequence of comands (Windows Syst
 ```
 mvnw.cmd clean package
 docker build -t [image_id/image_tag] .
-docker run -d -p [host_port:container_port] �name [container_name] [image_id/image_tag]
+docker run -d -p [host_port:container_port] --name [container_name] [image_id/image_tag]
 ```
 
 ## Endpoints
