@@ -5,5 +5,5 @@ import com.dynatrace.internship.structures.RateDifference;
 import java.util.Currency;
 
 public interface MajorDifferenceRateGetter {
-    RateDifference getMajorDifferenceRate(Currency currency, int numberOfQuotations);
+    RateDifference getMajorRateDifference(Currency currency, int numberOfQuotations);
 }

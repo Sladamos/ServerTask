@@ -24,7 +24,7 @@ public class NBPMajorDifferencesController {
     }
 
     @GetMapping(value = DIFFERENCES_URL + "/{code}/{quotations}")
-    public String getMajorDifference(@PathVariable("code") String currencyCode, @PathVariable("quotations") String quotations) {
+    public String getMajorDifferenceRate(@PathVariable("code") String currencyCode, @PathVariable("quotations") String quotations) {
         try {
             CurrencyParser parser = new CurrencyParserImpl();
             Currency currency = parser.getCurrencyInstance(currencyCode);
@@ -33,7 +33,7 @@ public class NBPMajorDifferencesController {
             int numberOfQuotations = quotationsParser.getNumberOfQuotations(quotations);
 
             MajorDifferenceRateGetter differenceRateGetter = new JsonNBPMajorDifferenceRateGetter(NBP_TABLE_ID);
-            RateDifference difference =  differenceRateGetter.getMajorDifferenceRate(currency, numberOfQuotations);
+            RateDifference difference =  differenceRateGetter.getMajorRateDifference(currency, numberOfQuotations);
 
             return currency.getCurrencyCode() + "<br/>Major rate difference: " + difference.getDifferenceValue() +
                     "<br/>One of possible dates: " + difference.getDifferenceDate();

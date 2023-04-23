@@ -18,13 +18,13 @@ public abstract class NBPMajorDifferenceRateGetter implements MajorDifferenceRat
     private final String RATE_PATH = "http://api.nbp.pl/api/exchangerates/rates/";
 
     @Override
-    public RateDifference getMajorDifferenceRate(Currency currency, int numberOfQuotations) {
+    public RateDifference getMajorRateDifference(Currency currency, int numberOfQuotations) {
         String finalPath = createFinalPath(currency, numberOfQuotations);
         try {
             var creator = new HttpConnectionCreator();
             HttpURLConnection conn = creator.createConnection(finalPath, "GET");
             tryToConnect(conn);
-            return getMajorDifferenceRateFromUrl(conn.getURL());
+            return getMajorRateDifferenceFromUrl(conn.getURL());
 
         } catch (Exception err) {
             throw new MajorDifferenceRateException(err.getMessage());
@@ -45,7 +45,7 @@ public abstract class NBPMajorDifferenceRateGetter implements MajorDifferenceRat
 
     protected abstract String getFormatAttribute();
 
-    protected abstract RateDifference getMajorDifferenceRateFromUrl(URL url);
+    protected abstract RateDifference getMajorRateDifferenceFromUrl(URL url);
 
     private void tryToConnect(HttpURLConnection conn) {
         try {

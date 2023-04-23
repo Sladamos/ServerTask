@@ -24,13 +24,13 @@ public class JsonNBPMajorDifferenceRateGetter extends NBPMajorDifferenceRateGett
     }
 
     @Override
-    protected RateDifference getMajorDifferenceFromUrl(URL url) {
+    protected RateDifference getMajorRateDifferenceFromUrl(URL url) {
         try {
             JSONObject json = createJsonFromURL(url);
             JSONArray rates = (JSONArray) json.get("rates");
             if(rates.length() == 0)
                 throw new MajorDifferenceRateException("No results found!");
-            return getMajorDifferenceFromRates(rates);
+            return getMajorRateDifferenceFromRates(rates);
         }
         catch (Exception err) {
             throw new RuntimeException(err);
@@ -47,29 +47,29 @@ public class JsonNBPMajorDifferenceRateGetter extends NBPMajorDifferenceRateGett
         }
     }
 
-    private RateDifference getMajorDifferenceFromRates(JSONArray rates) {
+    private RateDifference getMajorRateDifferenceFromRates(JSONArray rates) {
         JSONObject majorRate = getMajorRate(rates);
-        BigDecimal majorSellValue = (BigDecimal)majorRate.get("ask");
+        BigDecimal majorAskValue = (BigDecimal)majorRate.get("ask");
         BigDecimal majorBuyValue = (BigDecimal)majorRate.get("bid");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateParser parser = new DateParserImpl(formatter);
 
-        LocalDate differenceDate = parser.getFormattedDate((String)majorRate.get("effectiveDate"));
-        double differenceValue = majorSellValue.subtract(majorBuyValue).abs().doubleValue();
-        return new RateDifference(differenceDate, differenceValue);
+        LocalDate rateDifferenceDate = parser.getFormattedDate((String)majorRate.get("effectiveDate"));
+        double rateDifferenceValue = majorAskValue.subtract(majorBuyValue).abs().doubleValue();
+        return new RateDifference(rateDifferenceDate, rateDifferenceValue);
     }
 
     private JSONObject getMajorRate(JSONArray rates) {
         JSONObject majorRate = (JSONObject) rates.get(0);
         for(int i = 0; i < rates.length(); i++) {
             JSONObject rate = rates.getJSONObject(i);
-            BigDecimal majorSellValue = (BigDecimal)majorRate.get("ask");
+            BigDecimal majorAskValue = (BigDecimal)majorRate.get("ask");
             BigDecimal majorBuyValue = (BigDecimal)majorRate.get("bid");
-            BigDecimal rateSellValue = (BigDecimal)rate.get("ask");
+            BigDecimal rateAskValue = (BigDecimal)rate.get("ask");
             BigDecimal rateBuyValue = (BigDecimal)rate.get("bid");
-            BigDecimal majorDifference = majorSellValue.subtract(majorBuyValue).abs();
-            BigDecimal rateDifference = rateSellValue.subtract(rateBuyValue).abs();
+            BigDecimal majorDifference = majorAskValue.subtract(majorBuyValue).abs();
+            BigDecimal rateDifference = rateAskValue.subtract(rateBuyValue).abs();
             if(majorDifference.compareTo(rateDifference) < 0) {
                 majorRate = rate;
             }
