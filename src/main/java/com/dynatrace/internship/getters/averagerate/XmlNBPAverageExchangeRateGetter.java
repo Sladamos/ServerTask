@@ -1,4 +1,4 @@
-package com.dynatrace.internship.getters.averageexchagerate;
+package com.dynatrace.internship.getters.averagerate;
 
 import org.w3c.dom.Document;
 

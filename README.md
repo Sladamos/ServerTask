@@ -38,7 +38,7 @@ URL path: nbp/exchanges/{currency code}/{properly formatted date}
 2. Given a currency code and the number of last quotations N (N <= 255), provide the max and min average value.
 
 ```
-URL path: nbp/min-max/{currency code}/{number of last quotations}
+URL path: nbp/extremes/{currency code}/{number of last quotations}
 ```
 3. Given a currency code and the number of last quotations N (N <= 255), provide the major difference between the buy and ask rate.
 
@@ -57,7 +57,7 @@ curl http://localhost:8080/nbp/exchanges/GBP/2023-01-02
 ```
 - To query operation 2, run this command (which should have the value 5.2768 as the returning information):
 ```
-curl http://localhost:8080/nbp/min-max/GBP/12
+curl http://localhost:8080/nbp/extremes/GBP/12
 ```
 - To query operation 3, run this command (which should have the value 0.107 as the returning information):
 ```

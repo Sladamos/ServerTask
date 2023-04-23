@@ -1,4 +1,4 @@
-package com.dynatrace.internship.getters.minmaxaveragerate;
+package com.dynatrace.internship.getters.extremerate;
 
 import com.dynatrace.internship.creators.HttpConnectionCreator;
 import com.dynatrace.internship.exceptions.ConnectionException;
@@ -12,12 +12,12 @@ import java.net.URL;
 import java.util.Currency;
 
 @AllArgsConstructor
-public abstract class NBPMinMaxAverageRateGetter implements MinMaxAverageRateGetter {
+public abstract class NBPExtremeExchangeRatesGetter implements ExtremeExchangeRatesGetter {
 	private char tableId;
 	private final String RATE_PATH = "http://api.nbp.pl/api/exchangerates/rates/";
 
 	@Override
-	public double getMinAverageValue(Currency currency, int numberOfQuotations) {
+	public double getMinExchangeRate(Currency currency, int numberOfQuotations) {
 		String finalPath = createFinalPath(currency, numberOfQuotations);
 		try {
 			var creator = new HttpConnectionCreator();
@@ -31,7 +31,7 @@ public abstract class NBPMinMaxAverageRateGetter implements MinMaxAverageRateGet
 	}
 
 	@Override
-	public double getMaxAverageValue(Currency currency, int numberOfQuotations) {
+	public double getMaxExchangeRate(Currency currency, int numberOfQuotations) {
 		String finalPath = createFinalPath(currency, numberOfQuotations);
 		try {
 			var creator = new HttpConnectionCreator();

@@ -19,7 +19,8 @@ public class NBPMajorDifferencesController {
 
     @GetMapping(value = {DIFFERENCES_URL + "/**", DIFFERENCES_URL})
     public String generateError() {
-        return "Specify correct currency code, and decimal number of last quotations from range <" + MINIMUM_QUOTATIONS + ":" + MAXIMUM_QUOTATIONS + ">";
+        return "Specify correct currency code, and decimal number of last quotations from range <" + MINIMUM_QUOTATIONS + ":" + MAXIMUM_QUOTATIONS +
+                ">  in format declared in README file";
     }
 
     @GetMapping(value = DIFFERENCES_URL + "/{code}/{quotations}")

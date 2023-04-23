@@ -1,4 +1,4 @@
-package com.dynatrace.internship.getters.minmaxaveragerate;
+package com.dynatrace.internship.getters.extremerate;
 
 import org.w3c.dom.Document;
 
@@ -8,8 +8,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 import java.net.URL;
 
-public class XmlNBPMinMaxAverageRateGetter extends NBPMinMaxAverageRateGetter {
-	public XmlNBPMinMaxAverageRateGetter(char tableId) {
+public class XmlNBPExtremeExchangeRatesGetter extends NBPExtremeExchangeRatesGetter {
+	public XmlNBPExtremeExchangeRatesGetter(char tableId) {
 		super(tableId);
 	}
 

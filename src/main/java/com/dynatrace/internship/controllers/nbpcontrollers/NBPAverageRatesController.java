@@ -1,8 +1,8 @@
 package com.dynatrace.internship.controllers.nbpcontrollers;
 
 
-import com.dynatrace.internship.getters.averageexchagerate.AverageExchangeRateGetter;
-import com.dynatrace.internship.getters.averageexchagerate.XmlNBPAverageExchangeRateGetter;
+import com.dynatrace.internship.getters.averagerate.AverageExchangeRateGetter;
+import com.dynatrace.internship.getters.averagerate.XmlNBPAverageExchangeRateGetter;
 import com.dynatrace.internship.parsers.CurrencyParser;
 import com.dynatrace.internship.parsers.CurrencyParserImpl;
 import com.dynatrace.internship.parsers.DateParser;
@@ -16,17 +16,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 
 @RestController
-public class NBPAverageExchangesController {
+public class NBPAverageRatesController {
 
-    private final static String EXCHANGES_URL = "nbp/exchanges";
+    private final static String RATES_URL = "nbp/exchanges";
     private final static char NBP_TABLE_ID = 'A';
 
-    @GetMapping(value = {EXCHANGES_URL + "/**", EXCHANGES_URL})
+    @GetMapping(value = {RATES_URL + "/**", RATES_URL})
     public String generateError() {
-        return "Specify correct currency code and date";
+        return "Specify correct currency code and date in format declared in README file";
     }
 
-    @GetMapping(value = EXCHANGES_URL + "/{code}/{date}")
+    @GetMapping(value = RATES_URL + "/{code}/{date}")
     public String getExchangeRate(@PathVariable("code") String currencyCode, @PathVariable("date") String date) {
         try {
             CurrencyParser parser = new CurrencyParserImpl();

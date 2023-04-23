@@ -1,4 +1,4 @@
-package com.dynatrace.internship.getters.averageexchagerate;
+package com.dynatrace.internship.getters.averagerate;
 
 import com.dynatrace.internship.creators.HttpConnectionCreator;
 import com.dynatrace.internship.exceptions.AverageExchangeRateException;
