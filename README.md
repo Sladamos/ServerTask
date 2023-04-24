@@ -47,7 +47,7 @@ URL path: nbp/differences/{currency code}/{number of last quotations}
 ```
 
 ## Examples
-- Firstly launch server  
+- Firstly, launch the server  
 ```
 mvnw.cmd spring-boot:run
 ```
@@ -55,7 +55,7 @@ mvnw.cmd spring-boot:run
 ```
 curl http://localhost:8080/nbp/exchanges/GBP/2023-01-02
 ```
-- To query operation 2, run this command (which should have the value 5.2768 as the returning information):
+- To query operation 2, run this command (which should have the values 5.3648 and 5.2086 as the returning information):
 ```
 curl http://localhost:8080/nbp/extremes/GBP/12
 ```
