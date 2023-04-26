@@ -43,7 +43,7 @@ public class AverageRatesController {
 			DateParser dateParser = new DateParserImpl(formatter);
 			LocalDate localDate = dateParser.getFormattedDate(date);
 
-			AverageExchangeRateGetter rateGetter = getRateGetter(institution);
+			AverageExchangeRateGetter rateGetter = getAverageRatesGetter(institution);
 
 			return currency.getCurrencyCode() +  "<br/>Selected date: " + localDate.toString() +
 					"<br/>Average rate: " + rateGetter.getAverageExchangeRate(currency, localDate);
@@ -53,7 +53,7 @@ public class AverageRatesController {
 		}
 	}
 
-	private AverageExchangeRateGetter getRateGetter(String institution) {
+	private AverageExchangeRateGetter getAverageRatesGetter(String institution) {
 		AverageExchangeRateGetter rateGetter = rateGetters.get(institution);
 		if (rateGetter == null) {
 			throw new IncorrectInstitutionException("Specify correct institution.");
