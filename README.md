@@ -32,18 +32,18 @@ Server provides a separate endpoint for each operation:
 1. Given a date (formatted YYYY-MM-DD) and a currency code, provide its average exchange rate.
 
 ```
-URL path: nbp/exchanges/{currency code}/{properly formatted date}
+URL path: exchanges/{institution}/{currency code}/{properly formatted date}
 ```
 
 2. Given a currency code and the number of last quotations N (N <= 255), provide the max and min average value.
 
 ```
-URL path: nbp/extremes/{currency code}/{number of last quotations}
+URL path: extremes/{institution}/{currency code}/{number of last quotations}
 ```
 3. Given a currency code and the number of last quotations N (N <= 255), provide the major difference between the buy and ask rate.
 
 ```
-URL path: nbp/differences/{currency code}/{number of last quotations}
+URL path: differences/{institution}/{currency code}/{number of last quotations}
 ```
 
 ## Examples
@@ -53,13 +53,13 @@ mvnw.cmd spring-boot:run
 ```
 - To query operation 1, run this command (which should have the value 5.2768 as the returning information):
 ```
-curl http://localhost:8080/nbp/exchanges/GBP/2023-01-02
+curl http://localhost:8080/exchanges/nbp/GBP/2023-01-02
 ```
 - To query operation 2, run this command (which should have the values 5.3648 and 5.2086 as the returning information):
 ```
-curl http://localhost:8080/nbp/extremes/GBP/12
+curl http://localhost:8080/extremes/nbp/GBP/12
 ```
 - To query operation 3, run this command (which should have the value 0.107 as the returning information):
 ```
-curl http://localhost:8080/nbp/differences/GBP/12
+curl http://localhost:8080/differences/nbp/GBP/12
 ```  
